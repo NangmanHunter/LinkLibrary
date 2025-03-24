@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre id="pre"></pre>
+
+</body>
+</html>
+<script>
+    async function fetchAllPages() {
+        let page = 1;
+        let allData = [];
+
+
+        while (page<=728) {
+            const response = await fetch(`http://www.law.go.kr/DRF/lawSearch.do?OC=djwlfdls1&target=lstrm&type=JSON&display=100&page=${page}`);
+            if (!response.ok) break; 
+       
+            let data = ``;
+            data = await response.json();
+            // data =JSON.stringify(data, null, 2);
+
+
+            // document.getElementById("pre").innerText+=data;
+
+            console.log("page:", page);
+
+            allData.push(data); 
+            page++; 
+        }
+
+        console.log(allData);
+        console.log("총 데이터 개수:", allData.length);
+
+        return allData;
+    }
+
+
+
+    function downloadDataAsFile(data) {
+        const jsonData = JSON.stringify(data, null, 2);  // 데이터를 JSON 형식으로 변환
+        const blob = new Blob([jsonData], { type: "application/json" });  // Blob 객체 생성
+        const url = URL.createObjectURL(blob);  // Blob URL 생성
+
+        // 다운로드 링크 만들기
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "data.json";  // 다운로드할 파일 이름 지정
+
+        link.click();
+
+        // Blob URL 해제
+        URL.revokeObjectURL(url);
+    }
+
+    async function handleData() {
+        const allData = await fetchAllPages();  // 데이터를 가져옴
+        downloadDataAsFile(allData);  // 데이터를 파일로 저장
+    }
+
+    handleData();
+
+</script>
+<!-- 
+.json
+ㄴ파일로
+ㄴ바로다운ㄱㄱ.
+ㄴ이게
+ㄴ너무좋다.
+ㄴㄹㅇ.!!!
+랜더링
+ㄴ읽고쓰고
+ㄴ이러면서
+ㄴ램소모가
+ㄴ생각보다큰가봄.
+ㄴ버벅임.;;
+이런경우
+ㄴ그냥
+ㄴ데이터만
+ㄴ싹
+ㄴ가져다가
+ㄴ긁어오는게
+ㄴ제일맞는듯.
+ㄴㄹㅇ.
+ㄴㄱㄱ.!!!
+
+결국
+ㄴ최적화위해
+ㄴjson>>html
+ㄴ.json>>.html
+
+
+-->

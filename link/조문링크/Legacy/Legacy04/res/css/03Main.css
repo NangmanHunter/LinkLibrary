@@ -1,0 +1,10 @@
+#main{
+    display: flex;
+}
+#nav{
+    white-space: nowrap;
+
+    position: sticky;
+    top:0;
+    height: 100vh;
+}

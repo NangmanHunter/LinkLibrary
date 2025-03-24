@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+
+    let d;
+
+    fetch("법령별표서식.json")
+        .then(response => response.json())   
+        .then(data => {
+            console.log(data);                
+            d=data;
+            refactor(d);
+        })
+
+
+    function refactor(d){
+
+        let t;
+        t=d[0].licBylSearch.licbyl
+
+        t.forEach((obj)=> {
+
+            let t;
+            t=obj
+            t=obj.별표명
+            console.log(t);
+
+            let s;
+            t=obj.관련법령명
+            s=t
+            s=`${s},`
+            
+            t=obj.별표종류
+            s+=t
+
+
+            t=obj.별표번호
+            
+            let firstPart; 
+            firstPart=t.slice(0, 4); 
+            firstPart=parseInt(firstPart, 10).toString();
+            console.log(firstPart);
+
+            let secondPart;
+            secondPart=t.slice(4);
+            secondPart=parseInt(secondPart, 10).toString();
+            secondPart==0 ? secondPart=`` : secondPart= "의" + secondPart;
+             
+
+            let sum;
+            sum=(firstPart+secondPart);
+            s+=sum
+            s=`(${s})`
+            console.log(s);
+
+
+        })
+
+    }
+
+
+
+
+
+</script>

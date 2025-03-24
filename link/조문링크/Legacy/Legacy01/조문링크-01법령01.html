@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="favicon" rel="icon" href="">
+    <title>조문링크</title>
+    <link rel="stylesheet" href="res/darkmode-rgba.css">
+    
+</head>
+<body>
+
+    <h1 class="title">📌조문링크</h1>
+    <ul class="조문-ul">
+        <li>ㄱ
+            <ul>
+                <li>가등기담보법</li>
+                <li>가사소송규칙</li>
+                <li>가사소송법</li>
+                <li>가족관계등록법</li>
+                <li>건축법</li>
+                <li>경찰관직무집행법</li>
+                <li>공간정보관리법</li>
+                <li>공간정보관리법시행령</li>
+                <li>공익법인법</li>
+                <li>공직선거법</li>
+                <li>국가공무원복무규정</li>
+                <li>국가공무원법</li>
+                <li>국세징수법</li>
+                <li>국유재산법</li>
+                <li>금융실명법</li>
+                <li>금융실명법시행령</li>
+                <li>근로기준법</li>
+            </ul>
+        </li>
+        <li>ㄴ
+            <ul>
+                <li>농지법</li>
+            </ul>
+        </li>
+        <li>ㄷ
+            <ul>
+                <li>대부업법</li>
+                <li>동산채권담보법</li>
+                <li>대한민국헌법</li>
+                <li>디자인보호법</li>
+                <li>디자인보호법시행령</li>
+                <li>디자인보호법시행규칙</li>
+            </ul>
+        </li>
+        <li>ㅁ
+            <ul>
+                <li>민법</li>
+                <li>민사소송법</li>
+                <li>민사소송규칙</li>
+                <li>민사집행법</li>
+            </ul>
+        </li>
+        <li>ㅂ
+            <ul>
+                <li>보증인보호법</li>
+                <li>보험업법</li>
+                <li>부동산거래신고법</li>
+                <li>부동산등기법</li>
+                <li>부동산실명법</li>
+                <li>부정경쟁방지법</li>
+            </ul>
+        </li>
+        <li>ㅅ
+            <ul>
+                <li>상법</li>
+                <li>상가임대차법</li>
+                <li>상표법</li>
+                <li>상표법시행령</li>
+                <li>상표법시행규칙</li>
+                <li>실용신안법</li>
+                <li>실용신안법시행령</li>
+                <li>실용신안법시행규칙</li>
+            </ul>
+        </li>
+        <li>ㅇ
+            <ul>
+                <li>약관법</li>
+                <li>이자제한법</li>
+            </ul>
+        </li>
+        <li>ㅈ
+            <ul>
+                <li>지적재조사법시행규칙</li>
+                <li>집합건물법</li>
+                <li>저작권법</li>
+                <li>주택임대차법</li>
+            </ul>
+        </li>
+        <li>ㅌ
+            <ul>
+                <li>토지보상법</li>
+                <li>토양환경보전법</li>
+                <li>특허법</li>
+                <li>특허법시행령</li>
+                <li>특허법시행규칙</li>
+            </ul>
+        </li>
+        <li>ㅎ
+            <ul>
+                <li>하도급법</li>
+                <li>행정업무규정</li>
+                <li>행정업무규정시행규칙</li>
+                <li>형법</li>
+                <li>환경정책기본법</li>
+            </ul>
+        </li>
+    </ul>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.min.js"></script>
+    <script src="../resources/udf.js"></script>
+    <script src="../resources/udc.js"></script>
+
+
+</body>
+
+</html>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    a{
+        text-decoration: none;
+        color:#aaa;
+    }
+
+
+    .조문-ul a{
+        color: var(--a);
+        filter: drop-shadow(0px 0px 5px var(--a));
+        box-shadow: 0px 0px 5px var(--a);
+
+        width: 100%;
+        height: 100%;
+        display: block;
+
+        padding: 10px;
+
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .조문-ul>li>ul{
+        display: inline-grid;
+        list-style-type: '';
+    }
+
+    :root{
+        --a: white;
+        --b : #aaa;
+    }
+
+    .조문-ul a:hover{
+        color: var(--b);
+        filter:  invert(1);
+        box-shadow: 0px 0px 5px var(--b);
+    }
+
+
+
+
+
+
+
+
+</style>
+
+<script>
+
+    $(`.조문-ul>li>ul>li`).each(function(){
+        const t=$(this).text();
+        const t_=t.replace(/\(.*\)/,"");
+        const t__=t_.trim();
+        console.log(t);
+        $(this).wrapInner(`<a href="https://www.law.go.kr/법령/${t__}" target="_blank"></a>`)
+    })
+
+
+</script>
+<script>
+    function createFavicon(text) {
+        const canvas = document.createElement("canvas");
+        canvas.width = 64;
+        canvas.height = 64;
+
+        const ctx = canvas.getContext("2d");
+    
+
+        ctx.fillStyle = "black";
+        ctx.font = "60px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+        const link = document.getElementById("favicon");
+        link.href = canvas.toDataURL("image/png");
+    }
+
+    // Set the favicon text
+    createFavicon("📌");
+</script>

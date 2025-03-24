@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre id="pre"></pre>
+
+</body>
+</html>
+<script>
+    async function fetchAllPages() {
+        let page = 1;
+        let allData = [];
+
+
+        while (page<=2) {
+            const response = await fetch(`http://www.law.go.kr/DRF/lawSearch.do?OC=djwlfdls1&target=lstrm&type=JSON&display=100&page=${page}`);
+            if (!response.ok) break; 
+       
+            let data = ``;
+            data = await response.json();
+            // data =JSON.stringify(data, null, 2);
+
+
+            // document.getElementById("pre").innerText+=data;
+
+            console.log("page:", page);
+
+            allData.push(data); 
+            page++; 
+        }
+
+        console.log(allData);
+        console.log("총 데이터 개수:", allData.length);
+
+        return allData;
+    }
+
+    let t=fetchAllPages();
+    console.log(t);
+
+</script>
+<!-- 
+
+-->

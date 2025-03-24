@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre id="pre"></pre>
+
+</body>
+</html>
+<script>
+    async function fetchAllPages() {
+        let page = 1;
+        let allData = [];
+
+
+        while (page<=728) {
+            const response = await fetch(`http://www.law.go.kr/DRF/lawSearch.do?OC=djwlfdls1&target=lstrm&type=JSON&display=100&page=${page}`);
+            if (!response.ok) break; 
+       
+            let data = ``;
+            data = await response.json();
+
+
+            console.log("page:", page);
+
+            allData.push(data); 
+            page++; 
+        }
+
+        console.log(allData);
+        console.log("총 데이터 개수:", allData.length);
+
+        return allData;
+    }
+
+
+
+    function downloadDataAsFile(data) {
+        const jsonData = JSON.stringify(data, null, 2);  // 데이터를 JSON 형식으로 변환
+        const blob = new Blob([jsonData], { type: "application/json" });  // Blob 객체 생성
+        const url = URL.createObjectURL(blob);  // Blob URL 생성
+
+        // 다운로드 링크 만들기
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "법령용어.json";  // 다운로드할 파일 이름 지정
+
+        link.click();
+
+        // Blob URL 해제
+        URL.revokeObjectURL(url);
+    }
+
+    async function handleData() {
+        const allData = await fetchAllPages();  // 데이터를 가져옴
+        downloadDataAsFile(allData);  // 데이터를 파일로 저장
+    }
+
+    handleData();
+
+</script>
+<!-- 
+이런식이면
+ㄴ다른데이터들도
+ㄴ싹
+ㄴ매번
+ㄴ이렇게
+ㄴ싹
+ㄴ긁을수있을듯.
+
+와.
+ㄴ그러면
+ㄴ그냥
+ㄴ인터벌로
+ㄴ싹.
+ㄴJSON만잡아다가
+ㄴ싹
+ㄴ해버리면
+ㄴ되는거잖아.
+ㄴㄹㅇ.
+ㄴ와...
+ㄴ개좋은데?!
+ㄴㅎㅎㅎ.
+ㄴㄱㄱ.
+
+-->

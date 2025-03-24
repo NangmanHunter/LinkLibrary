@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    async function fetchAllPages() {
+        let page = 1;
+        let allData = [];
+
+
+        while (page<=1) {
+            const response = await fetch(`http://www.law.go.kr/DRF/lawSearch.do?OC=djwlfdls1&target=lstrm&type=JSON&display=100&page=${page}`);
+            if (!response.ok) break; 
+            
+
+            
+            const reader = response.body.getReader(); // ReadableStream을 읽는 리더(reader) 생성
+            const { value, done } = await reader.read(); // 데이터를 한 번 읽음
+
+            console.log("🔹 value (Uint8Array):", value); // 바이너리 데이터
+            console.log("🔹 done:", done); // 데이터가 끝났는지 여부
+
+    
+            
+            console.log(response);
+            const data = await response.json();
+
+            console.log(data);
+
+            // allData.push(...data); 
+            page++; 
+        }
+
+        console.log("총 데이터 개수:", allData.length);
+        return allData;
+    }
+
+    fetchAllPages();
+</script>
+<!-- 
+❗ 헉? JSON이 아니고 바이너리 데이터(숫자 배열)이네?
+✅ ReadableStream이기 때문에 바로 JSON 문자열이 아니라 **바이너리(Uint8Array)**로 반환됨.
+
+response로
+ㄴbody-Data
+ㄴ바로못읽음.!!!
+ㄴ0101...
+ㄴ바이너리.
+
+
+
+📌 done: false의 이유
+ㄴ**response.body.getReader()**는 데이터를 "조각" 단위로 읽어옴.
+ㄴ첫 번째 read() 호출에서는, **done: false**가 반환되면, 데이터가 아직 끝나지 않았다는 의미.
+ㄴ따라서 데이터 스트림이 계속 진행 중이고, 추가 데이터를 계속 읽을 수 있다는 뜻.
+
+
+-->

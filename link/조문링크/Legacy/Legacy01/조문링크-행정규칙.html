@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="favicon" rel="icon" href="">
+    <title>조문링크</title>
+
+    <link rel="stylesheet" href="_res/darkmode-rgba.css">
+    
+
+    
+
+
+
+
+</head>
+
+<body>
+
+    <h1 class="title">📌조문링크</h1>
+
+
+
+    <ul>
+        <li>행정규칙
+            <ul>
+                <li><a href="https://www.law.go.kr/%ED%96%89%EC%A0%95%EA%B7%9C%EC%B9%99/%EB%AC%BC%ED%92%88%EB%A5%98%EB%B3%84%EB%AC%BC%ED%92%88%EB%AA%A9%EB%A1%9D">물품류별물품목록</a></li>
+            </ul>
+        </li>
+
+    </ul>
+
+
+
+
+
+
+
+
+
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.min.js"></script>
+    <script src="../resources/udf.js"></script>
+    <script src="../resources/udc.js"></script>
+
+
+</body>
+
+</html>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    a{
+        text-decoration: none;
+        color:#aaa;
+    }
+
+
+    .조문-ul a{
+        color: var(--a);
+        filter: drop-shadow(0px 0px 5px var(--a));
+        box-shadow: 0px 0px 5px var(--a);
+
+        width: 100%;
+        height: 100%;
+        display: block;
+
+        padding: 10px;
+
+    }
+
+    .title {
+        text-align: center;
+    }
+    
+    .조문-ul>li>ul{
+        display: inline-grid;
+        list-style-type: '';
+    }
+
+    :root{
+        --a: white;
+        --b : #aaa;
+    }
+
+    .조문-ul a:hover{
+        color: var(--b);
+        filter:  invert(1);
+        box-shadow: 0px 0px 5px var(--b);
+    }
+
+
+
+
+
+
+
+
+</style>
+
+<script>
+
+
+</script>
+<script>
+    function createFavicon(text) {
+        const canvas = document.createElement("canvas");
+        canvas.width = 64;
+        canvas.height = 64;
+
+        const ctx = canvas.getContext("2d");
+    
+
+        ctx.fillStyle = "black";
+        ctx.font = "60px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+        const link = document.getElementById("favicon");
+        link.href = canvas.toDataURL("image/png");
+    }
+
+    // Set the favicon text
+    createFavicon("📌");
+</script>

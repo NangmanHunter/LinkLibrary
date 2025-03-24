@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+
+    let d;
+    let dataSum=``;
+
+    fetch("법령별표서식.json")
+        .then(response => response.json())   
+        .then(data => {
+            console.log(data);                
+            d=data;
+            refactor(d);
+        })
+
+
+    function refactor(d){
+
+        let t;
+
+        d.forEach(objOuter=>{
+            
+            t=objOuter.licBylSearch.licbyl
+            t.forEach((obj)=> {
+
+
+                let s;
+                s=obj.관련법령명
+                s=`${s},`
+                s+=obj.별표종류
+
+
+                let num;
+                num=obj.별표번호
+                
+                let firstPart; 
+                firstPart=num.slice(0, 4); 
+                firstPart=parseInt(firstPart, 10).toString();
+
+                let secondPart;
+                secondPart=num.slice(4);
+                secondPart=parseInt(secondPart, 10).toString();
+                secondPart==0 ? secondPart=`` : secondPart= "의" + secondPart;
+                
+
+                let sum;
+                sum=(firstPart+secondPart);
+                s+=sum
+                s=`(${s})`
+                dataSum+=`${s}\n`
+
+
+
+            })
+            
+        })
+        console.log(dataSum);
+
+    }
+
+
+
+
+
+</script>
+<!-- 
+오류로
+ㄴdataSum이
+ㄴ실행안됨.
+ㄴ오류나면
+ㄴ거기서
+ㄴ중단되버림.
+그렇기에
+ㄴ예외처리
+ㄴㄱㄱ해서.
+ㄴ싹잡아다진행.
+괜히
+ㄴ예외처리하는게
+ㄴ아니었음.
+ㄴ예외처리로
+ㄴ그다음것들
+ㄴ싹진행위해
+ㄴ그작업했던것.;;
+ㄴ와...
+앞단.
+ㄴif-return
+ㄴㄱㄱ.
+
+-->

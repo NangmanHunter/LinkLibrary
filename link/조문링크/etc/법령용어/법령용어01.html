@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    async function fetchAllPages() {
+        let page = 1;
+        let allData = [];
+
+        while (true) {
+            const response = await fetch(`http://www.law.go.kr/DRF/lawSearch.do?OC=djwlfdls1&target=lstrm&type=JSON&display=100&page=${page}`);
+            if (!response.ok) break; // 응답 실패하면 종료
+            
+            const data = await response.json();
+            if (data.length === 0) break; // 더 이상 데이터 없으면 종료
+
+            allData.push(...data); // 데이터 누적
+            page++; // 다음 페이지로 이동
+        }
+
+        console.log("총 데이터 개수:", allData.length);
+        return allData;
+    }
+
+    fetchAllPages();
+</script>
+<!-- 
+page =< 728
+
+while-true
+ㄴ여기선ㄴㄴ.
+ㄴ없으면
+ㄴ없다고
+ㄴ답을줌.
+그래서
+ㄴ무조건
+ㄴ계속됨.
+ㄴ당해
+ㄴ비최적.
+-->

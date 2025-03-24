@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+
+    let d;
+    let dataSum=``;
+
+    fetch("법령별표서식.json")
+        .then(response => response.json())   
+        .then(data => {
+            console.log(data);                
+            d=data;
+            refactor(d);
+        })
+
+
+    function refactor(d){
+
+        let t;
+
+        d.forEach(objOuter=>{
+            
+            t=objOuter.licBylSearch.licbyl
+            if(t==undefined){return}
+            t.forEach((obj)=> {
+
+
+                let s;
+                s=obj.관련법령명
+                s=`${s},`
+                s+=obj.별표종류
+
+
+                let num;
+                num=obj.별표번호
+                
+                let firstPart; 
+                firstPart=num.slice(0, 4); 
+                firstPart=parseInt(firstPart, 10).toString();
+                firstPart==0 ? firstPart=`` : firstPart=firstPart;
+ 
+                let secondPart;
+                secondPart=num.slice(4);
+                secondPart=parseInt(secondPart, 10).toString();
+                secondPart==0 ? secondPart=`` : secondPart= "의" + secondPart;
+                
+
+                let sum;
+                sum=(firstPart+secondPart);
+                s+=sum
+                s=`(${s})`
+                dataSum+=`${s}\n`
+
+
+
+            })
+            
+        })
+        console.log(dataSum);
+
+    }
+
+
+
+
+
+</script>
+<!-- 
+09번
+ㄴ활용ㄱㄱ.
+링크
+ㄴ서식 ->불능
+ㄴ서식0->가능
+
+-->
