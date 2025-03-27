@@ -24,6 +24,8 @@ TestResults.xml
 
 
 #
-# etc
-# Legacy
+etc
+Legacy
 Glossary
+*.json
+

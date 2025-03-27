@@ -8,7 +8,10 @@ $.get(`../../${fileName}.cList`,function(text) {
     linesArr.forEach(function(item) {
 
 
-        
+        let itemURL;
+        itemURL=item.replace(/%/g,`％`);
+        itemURL=itemURL.replace(/\?/g,`%3F`);
+        itemURL=itemURL.replace(/(?!\/\()\//g,`／`);
 
 
         if(fileName=="법령약칭"){
@@ -22,7 +25,7 @@ $.get(`../../${fileName}.cList`,function(text) {
         }
         else if(fileName=="법령해석례"){
 
-            let itemURL=item.replace(/\?/g,`%3F`);
+           
             item=`<a href="https://www.law.go.kr/${fileName}/(${itemURL})" target="_blank">${item}</a>`;
         }
         else if (fileName.includes("_")) {
