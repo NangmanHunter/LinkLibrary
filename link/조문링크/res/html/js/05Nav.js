@@ -3,7 +3,7 @@ function navFileName(fileName) {
 }
 
 
-$.get("..", function(data) {
+$.get(".", function(data) {
     let d=$(data)
     let s=``;
     d.find('.name').each(function() {

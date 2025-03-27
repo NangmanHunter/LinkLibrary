@@ -112,7 +112,7 @@ else:
 
 
 page=1
-while(page<pageMax):
+while(page<=pageMax):
     url = f"https://www.law.go.kr/DRF/lawSearch.do?OC=djwlfdls1&target={target}&type=JSON&display=100&page={page}"
     response = requests.get(url)
     if response.status_code == 200:

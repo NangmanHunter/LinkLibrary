@@ -14,9 +14,14 @@ $.get(`../${fileName}.cList`,function(text) {
         itemURL=itemURL.replace(/(?!\/\()\//g,`／`);
 
 
-        if(fileName=="법령약칭"){
+        if(fileName=="법령_약칭"){
             item=`<a href="https://www.law.go.kr/법령/${itemURL}" target="_blank">${item}</a>`;
         }
+        else if(fileName=="법령_연혁"){
+            item=`<a href="https://www.law.go.kr/법령/${itemURL}" target="_blank">${item}</a>`;
+        }
+
+
         else if(fileName=="판례_대법원"){
             item=`<a href="https://www.law.go.kr/판례/(${itemURL})" target="_blank">${item}</a>`;
         }
@@ -24,14 +29,31 @@ $.get(`../${fileName}.cList`,function(text) {
             item=`<a href="https://www.law.go.kr/${fileName}/(${itemURL})" target="_blank">${item}</a>`;
         }
         else if(fileName=="법령해석례"){
-
-           
             item=`<a href="https://www.law.go.kr/${fileName}/(${itemURL})" target="_blank">${item}</a>`;
         }
-        else if (fileName.includes("법령_")) {
+
+
+
+        else if (fileName.includes("법령_신구법비교")) {
             let fileNameArr=fileName.split("_")
             item=`<a href="https://www.law.go.kr/${fileNameArr[0]}/${fileNameArr[1]}/${itemURL}" target="_blank">${item}</a>`;
         } 
+        else if (fileName.includes("법령_제개정문")) {
+            let fileNameArr=fileName.split("_")
+            item=`<a href="https://www.law.go.kr/${fileNameArr[0]}/${fileNameArr[1]}/${itemURL}" target="_blank">${item}</a>`;
+        } 
+        else if (fileName.includes("법령_3단비교")) {
+            let fileNameArr=fileName.split("_")
+            item=`<a href="https://www.law.go.kr/${fileNameArr[0]}/${fileNameArr[1]}/${itemURL}" target="_blank">${item}</a>`;
+        } 
+
+
+
+        else if (fileName.includes("중앙부처1차해석_")) {
+            let fileNameArr=fileName.split("_")
+            item=`<a href="https://www.law.go.kr/${fileNameArr[0]}/${itemURL}" target="_blank">${item}</a>`;
+        } 
+
         else if (fileName.includes("위원회_")) {
             let fileNameArr=fileName.split("_")
             item=`<a href="https://www.law.go.kr/${fileNameArr[1]}/${itemURL}" target="_blank">${item}</a>`;
