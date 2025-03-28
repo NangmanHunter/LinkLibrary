@@ -22,9 +22,19 @@ $.get(`../${fileName}.cList`,function(text) {
         }
 
 
+
+
+
+
+
         else if(fileName=="판례_대법원"){
+            item=`<a href="https://www.law.go.kr/판례/${itemURL}" target="_blank">${item}</a>`;
+        }
+        else if(fileName=="판례_대법원_사건번호"){
             item=`<a href="https://www.law.go.kr/판례/(${itemURL})" target="_blank">${item}</a>`;
         }
+
+
         else if(fileName=="헌재결정례"){
             item=`<a href="https://www.law.go.kr/${fileName}/(${itemURL})" target="_blank">${item}</a>`;
         }
@@ -52,9 +62,19 @@ $.get(`../${fileName}.cList`,function(text) {
         else if (fileName.includes("중앙부처1차해석_")) {
             let fileNameArr=fileName.split("_")
             item=`<a href="https://www.law.go.kr/${fileNameArr[0]}/${itemURL}" target="_blank">${item}</a>`;
-        } 
+        }
+        else if (fileName.includes("학칙공단_")) {
+            let fileNameArr=fileName.split("_")
+            item=`<a href="https://www.law.go.kr/${fileNameArr[0]}/${itemURL}" target="_blank">${item}</a>`;
+        }
+        
+        
 
         else if (fileName.includes("위원회_")) {
+            let fileNameArr=fileName.split("_")
+            item=`<a href="https://www.law.go.kr/${fileNameArr[1]}/${itemURL}" target="_blank">${item}</a>`;
+        } 
+        else if (fileName.includes("법령_용어")) {
             let fileNameArr=fileName.split("_")
             item=`<a href="https://www.law.go.kr/${fileNameArr[1]}/${itemURL}" target="_blank">${item}</a>`;
         } 
