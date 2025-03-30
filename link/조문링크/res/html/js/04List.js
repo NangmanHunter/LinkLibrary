@@ -26,8 +26,23 @@ $.get(`../${fileName}.cList`,function(text) {
 
 
 
-
         else if(fileName=="판례_대법원"){
+            let lastIndex = item.lastIndexOf("/");
+            let itemPart1 = item.substring(0, lastIndex);  
+            let itemPart2 = item.substring(lastIndex + 1);
+
+            itemPart2=itemPart2.split(",");
+            itemPart2[0]=`${itemPart2[0]}👉`
+            itemPart2[0]=itemPart2[0].replace(`(`,``);
+            
+            itemPart2[1]=itemPart2[1].replace(`\r`,``);
+            itemPart2[1]=itemPart2[1].replace(`)`,`👉`);
+            
+
+            item=`<a href="https://www.law.go.kr/판례/${itemURL}" target="_blank">${itemPart2[1]}${itemPart2[0]}${itemPart1}</a>`;
+            
+        }
+        else if(fileName=="판례_대법원_URL"){
             item=`<a href="https://www.law.go.kr/판례/${itemURL}" target="_blank">${item}</a>`;
         }
         else if(fileName=="판례_대법원_사건번호"){
