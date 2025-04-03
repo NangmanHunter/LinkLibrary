@@ -3,7 +3,7 @@ function navFileName(fileName) {
 }
 
 
-$.get(".", function(data) {
+$.get("../.", function(data) {
     let d=$(data)
     let s=``;
     d.find('.name').each(function() {
@@ -24,3 +24,13 @@ $.get(".", function(data) {
     s=`<ul>${s}</ul>`
     $(`#nav`).html(s)
 });
+
+
+
+/*
+JS ->         fetch(..)  fetch(../)  fetch(../.)
+JQ -> get(.)  get(..)    get(../)    get(../.)
+*/
+
+
+

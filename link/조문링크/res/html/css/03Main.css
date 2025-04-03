@@ -8,5 +8,33 @@
     position: sticky;
     top:0;
     height: 100vh;
+
+    padding-right: 40px;
+    overflow-y: auto;
+    flex-shrink: 0;
 }
 
+
+#nav::-webkit-scrollbar {
+    width: 1px;
+}
+#nav::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+#nav::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+#nav::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+
+section{
+    padding-left: 40px;
+
+    min-width: 0;
+    word-wrap: break-word;
+
+    padding-right: 40px;
+}
