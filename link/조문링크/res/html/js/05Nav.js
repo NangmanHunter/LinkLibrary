@@ -1,29 +1,48 @@
-function navFileName(fileName) {
-    return fileName.split('.').slice(0, -1).join('.');
-}
+fetch(`..`)
+.then(response => response.text())    
+.then(response => {
 
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(response, 'text/html');
 
-$.get("../.", function(data) {
-    let d=$(data)
-    let s=``;
-    d.find('.name').each(function() {
-        let t=$(this).text()
-        if(t==`..`){ return }
-        t=navFileName(t)
-        if(t==``){ return }
+    let names=doc.querySelectorAll(`.icon-cList`);
+
+    let listArr=[];
+    names.forEach( (item, index) =>{
+        item=item.querySelector(`.name`)
+        item=item.innerText
+        item=item.replace(`.cList`,``)
         
+        listArr.push(item);
 
-        let tText=t.replace(/\d{2}/g,``);
+    })
 
-        t=`<a href="${t}.html">${tText}</a>`
-        s+=`<li>${t}</li>`
+    let s=``
+    listArr.forEach(item=> {
+
+        itemOrigin=item;
+        
+        item=`<a href="${item}.html">${item}</a>`
 
 
+        if(itemOrigin==fileName){
+            item=`<li style="list-style-type : '📌'">${item}</li>`
+        }
+        else{
+            item=`<li>${item}</li>`
+        }
 
-    });
+
+        s+=item;
+    })
+
     s=`<ul>${s}</ul>`
-    $(`#nav`).html(s)
-});
+
+    document.getElementById("nav").innerHTML=s;
+
+
+})
+
 
 
 

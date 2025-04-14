@@ -20,10 +20,15 @@
 }
 #nav::-webkit-scrollbar-track {
     border-radius: 10px;
+    
+    background-color: transparent;
+    box-shadow: none;
 }
 #nav::-webkit-scrollbar-thumb {
-    background: black;
+    background: linear-gradient(to bottom, transparent, black);
     border-radius: 10px;
+    
+    
 }
 #nav::-webkit-scrollbar-thumb:hover {
     background: #444;
